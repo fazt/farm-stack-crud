@@ -11,7 +11,7 @@ from models import Task, UpdateTask
 
 task = APIRouter()
 
-@task.get("/")	
+@task.get("/ping")	
 def welcome():
     return {"message": "Welcome to the API!"}
 

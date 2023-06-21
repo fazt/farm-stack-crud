@@ -1,5 +1,6 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from routes.task import task
 
 app = FastAPI()
@@ -17,3 +18,5 @@ app.add_middleware(
 )
 
 app.include_router(task)
+
+app.mount("/", StaticFiles(directory="client/dist", html=True), name="static")
