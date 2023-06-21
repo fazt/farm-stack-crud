@@ -33,3 +33,10 @@ class UpdateTask(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
     completed: Optional[bool] = None
+
+    class Config:
+        orm_mode = True
+        allow_population_by_field_name = True
+        json_encoders = {
+            ObjectId: str
+        }
