@@ -1,13 +1,14 @@
 import axios from "axios";
 
-const url = "http://localhost:8000/api/tasks";
+const URL = import.meta.env.VITE_API || "http://localhost:8000";
+const endpoint = URL + "/api/tasks";
 
-export const fetchTasks = () => axios.get(url);
+export const fetchTasks = () => axios.get(endpoint);
 
-export const fetchTask = (id) => axios.get(`${url}/${id}`);
+export const fetchTask = (id) => axios.get(`${endpoint}/${id}`);
 
-export const createTask = (task) => axios.post(url, task);
+export const createTask = (task) => axios.post(endpoint, task);
 
-export const updateTask = (id, task) => axios.put(`${url}/${id}`, task);
+export const updateTask = (id, task) => axios.put(`${endpoint}/${id}`, task);
 
-export const deleteTask = (id) => axios.delete(`${url}/${id}`);
+export const deleteTask = (id) => axios.delete(`${endpoint}/${id}`);
