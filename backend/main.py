@@ -5,7 +5,7 @@ from routes.task import task
 from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
-templates = Jinja2Templates(directory="client/dist")
+templates = Jinja2Templates(directory="../client/dist")
 
 
 origins = [
@@ -22,7 +22,8 @@ app.add_middleware(
 
 app.include_router(task)
 
-# static files for react app
+app.mount('/assets', StaticFiles(directory="../client/dist/assets"), 'static')
+
 @app.get("/{rest_of_path:path}")
 async def react_app(req: Request, rest_of_path: str):
     return templates.TemplateResponse('index.html', { 'request': req })
