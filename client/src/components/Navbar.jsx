@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <header className="flex justify-between items-center my-7">
       <Link to="/">
-        <h1 className="text-3xl font-bold">Tasks</h1>
+        <h1 className="text-3xl font-bold">Task App</h1>
       </Link>
       {location.pathname === "/" ? (
         <Link
