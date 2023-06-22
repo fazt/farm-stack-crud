@@ -1,15 +1,17 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
+# from fastapi.staticfiles import StaticFiles
+# from fastapi.templating import Jinja2Templates
 from routes.task import task
-from fastapi.templating import Jinja2Templates
+from decouple import config
 
 app = FastAPI()
 # templates = Jinja2Templates(directory="../client/dist")
 
+print(config("FRONTEND_URL"))
 
 origins = [
-    "http://localhost:5173",
+    config("FRONTEND_URL"),
 ]
 
 app.add_middleware(
